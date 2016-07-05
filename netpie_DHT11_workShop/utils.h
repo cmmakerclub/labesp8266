@@ -85,6 +85,4 @@ void _publish() {
   Serial.println(jsonStrbuffer);
   
   microgear.publish(const_cast<char*>(topic.c_str()), jsonStrbuffer);
-  
-  microgear.chat("OnOff001",ldrValue);
 }

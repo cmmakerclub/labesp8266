@@ -1,7 +1,7 @@
 #include <DHT.h>
 
 #define DHTPIN 12
-#define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
+#define DHTTYPE DHT11   // DHT 22  (AM2302), AM2321
 DHT dht(DHTPIN, DHTTYPE);
 
 void read_sensor(float* t_dht, float* h_dht);
@@ -18,9 +18,6 @@ void on_prepare_data(JsonObject * root) {
     data["temp"] = t_dht;
     data["humid"] = h_dht;
     data["millis"] = millis();
-    data["LDR_value"] = ldrValue;
-    //
-   // microgear.chat("OnOff001",(char*)analogRead(A0));
 };
 
 

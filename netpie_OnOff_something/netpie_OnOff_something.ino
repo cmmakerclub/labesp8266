@@ -16,11 +16,11 @@ const char* password = "espertap";
 
 
 #define APPID        "HelloCMMC"
-#define KEY          "Dp1nis3nyzrv1sB"
-#define SECRET       "lnRSV4K11OO1ypPvPzXQVANqc"
-#define ALIAS        "LDR001"
+#define KEY          "JM4k9zUkyQr4DQg"
+#define SECRET       "Ag2hR3MnfNnlMdaQ66oHcqQNU"
+#define ALIAS        "OnOff001"
 
-#define PUBLISH_EVERY_SECS (1*1000)
+#define PUBLISH_EVERY_SECS (2*1000)
 
 
 WiFiClient client;
@@ -39,7 +39,6 @@ StaticJsonBuffer<512> jsonDBuffer;
 
 
 int timer = 0;
-int ldrValue = 0;
 MicroGear microgear(client);
 
 #include "_publish.h"
@@ -52,7 +51,7 @@ void microgear_loop();
 void init_hardware() {
   Serial.begin(115200);
   pinMode(15, OUTPUT);
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);  
   Serial.println("Starting...");
 }
 
@@ -61,7 +60,7 @@ void setup() {
   init_hardware();
   init_wifi();
   init_netpie();
-  pinMode(A0, INPUT);
+  //microgear.subscribe("/gearname/LDR001/status");
 }
 
 void loop() {
@@ -71,14 +70,9 @@ void loop() {
 void microgear_loop() {
   if (microgear.connected()) {
     microgear.loop();
-    ldrValue = analogRead(A0);
     timer001.every_ms(PUBLISH_EVERY_SECS, [&]() {
-      _publish();
-   
+     // _publish();
     });
-//    if ((millis() % 1000) == 0 ) {
-//      microgear.chat("OnOff001", (char*)analogRead(A0));
-//    }
   }
   else {
     Serial.println("connection lost, reconnect...");

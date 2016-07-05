@@ -18,9 +18,6 @@ void on_prepare_data(JsonObject * root) {
     data["temp"] = t_dht;
     data["humid"] = h_dht;
     data["millis"] = millis();
-    data["LDR_value"] = ldrValue;
-    //
-   // microgear.chat("OnOff001",(char*)analogRead(A0));
 };
 
 
