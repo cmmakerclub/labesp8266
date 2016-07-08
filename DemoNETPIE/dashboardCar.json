@@ -1,0 +1,287 @@
+{
+ "version": "application/octet-stream",
+ "allow_edit": true,
+ "plugins": [],
+ "panes": [
+  {
+   "width": 1,
+   "row": {
+    "2": 1,
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "2": 2,
+    "3": 2,
+    "4": 4
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Toggle",
+     "settings": {
+      "caption": "เปิด - ปิดไฟ",
+      "state": "datasources[\"AVEC\"][\"/HelloCMMC/gearname/smartuniversity\"] == \"ON\"",
+      "ontext": "ON",
+      "offtext": "OFF",
+      "onaction": "microgear[\"RMUTL\"].chat(\"smartuniversity\",\"ON\")",
+      "offaction": "microgear[\"RMUTL\"].chat(\"smartuniversity\",\"OFF\")"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "2": 1,
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "2": 1,
+    "3": 3,
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "W",
+      "text": "",
+      "color": "green",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"W\");",
+      "onCreatedAction": ""
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "2": 5,
+    "3": 1,
+    "4": 5
+   },
+   "col": {
+    "2": 2,
+    "3": 1,
+    "4": 4
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "ความชื้น",
+      "value": "datasources[\"AVEC\"][\"/HelloCMMC/gearname/smartuniversity/Humidity\"]",
+      "units": "%RH",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "2": 7,
+    "3": 5,
+    "4": 19
+   },
+   "col": {
+    "2": 1,
+    "3": 3,
+    "4": 4
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "อุณหภูมิ",
+      "value": "datasources[\"AVEC\"][\"/HelloCMMC/gearname/smartuniversity/Temperature\"]",
+      "units": "องศาเซลเซียส",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "2": 13,
+    "3": 5,
+    "4": 1
+   },
+   "col": {
+    "2": 2,
+    "3": 2,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "A",
+      "color": "yellow",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"A\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "2": 15,
+    "3": 5,
+    "4": 1
+   },
+   "col": {
+    "2": 1,
+    "3": 2,
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "On",
+      "text": "เปิดไฟ",
+      "color": "green",
+      "onClick": "microgear[\"RMUTL\"].chat(\"smartuniversity\",\"ON\");"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "OFF",
+      "text": "ปิดไฟ",
+      "color": "red",
+      "onClick": "microgear[\"RMUTL\"].chat(\"smartuniversity\",\"OFF\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "2": 17,
+    "3": 7,
+    "4": 5
+   },
+   "col": {
+    "2": 2,
+    "3": 3,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "D",
+      "color": "yellow",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"D\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "2": 21,
+    "3": 9,
+    "4": 5
+   },
+   "col": {
+    "2": 1,
+    "3": 2,
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "S",
+      "color": "blue",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"S\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "2": 21,
+    "3": 9,
+    "4": 7
+   },
+   "col": {
+    "2": 2,
+    "3": 1,
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": []
+  },
+  {
+   "width": 1,
+   "row": {
+    "2": 25,
+    "3": 13,
+    "4": 9
+   },
+   "col": {
+    "2": 2,
+    "3": 1,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "STOP",
+      "color": "red",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"B\");"
+     }
+    }
+   ]
+  }
+ ],
+ "datasources": [
+  {
+   "name": "AVEC",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "esHD42XkS5qFyqM",
+    "secret": "NMbu0ySmFEzlyCJwfzjSnNH1y",
+    "alias": "smartuniversity",
+    "microgearRef": "RMUTL",
+    "topics": "/#",
+    "json_data": false,
+    "name": "AVEC"
+   }
+  },
+  {
+   "name": "4WDCar",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "ezA0UsVVmS1e6w3",
+    "secret": "ibxavB9NJfZFEZTPpkwt4Uyig",
+    "alias": "car",
+    "microgearRef": "4WD",
+    "topics": "/#",
+    "json_data": false
+   }
+  }
+ ],
+ "columns": 4
+}

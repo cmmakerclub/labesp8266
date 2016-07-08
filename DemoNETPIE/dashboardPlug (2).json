@@ -1,0 +1,115 @@
+{
+ "version": "application/octet-stream",
+ "allow_edit": true,
+ "plugins": [],
+ "panes": [
+  {
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 1,
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "ON",
+      "color": "green",
+      "onClick": "microgear[\"plugX\"].chat(\"plug001\",\"ON\");"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "OFF",
+      "color": "red",
+      "onClick": "microgear[\"plugX\"].chat(\"plug001\",\"OFF\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 2,
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "Humidity",
+      "value": "datasources[\"plug\"][\"/HelloCMMC/gearname/nat_easy netpie/Humidity\"]",
+      "units": "%",
+      "min_value": 0,
+      "max_value": 100
+     }
+    },
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "Temperature",
+      "value": "datasources[\"plug\"][\"/HelloCMMC/gearname/nat_easy netpie/Temperature\"]",
+      "units": "'C",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  }
+ ],
+ "datasources": [
+  {
+   "name": "AVEC",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "esHD42XkS5qFyqM",
+    "secret": "NMbu0ySmFEzlyCJwfzjSnNH1y",
+    "alias": "smartuniversity",
+    "microgearRef": "RMUTL",
+    "topics": "/#",
+    "json_data": false,
+    "name": "AVEC"
+   }
+  },
+  {
+   "name": "4WDCar",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "ezA0UsVVmS1e6w3",
+    "secret": "ibxavB9NJfZFEZTPpkwt4Uyig",
+    "alias": "car",
+    "microgearRef": "4WD",
+    "topics": "/#",
+    "json_data": false
+   }
+  },
+  {
+   "name": "plug",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "D32hr6VC0TKcuBS",
+    "secret": "TnDXJ11aBlyjgJkmxiafq0xmi",
+    "alias": "nat_freeboard",
+    "microgearRef": "plugX",
+    "topics": "/#",
+    "json_data": false,
+    "name": "plug"
+   }
+  }
+ ],
+ "columns": 4
+}
