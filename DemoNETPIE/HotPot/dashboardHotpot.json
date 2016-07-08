@@ -1,0 +1,116 @@
+{
+ "version": "application/octet-stream",
+ "allow_edit": true,
+ "plugins": [],
+ "panes": [
+  {
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 1,
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "indicator",
+     "settings": {
+      "title": "Hotpot status",
+      "value": "datasources[\"Hotpot\"][\"hotpotMarkI\"][\"d\"][\"boiling\"]",
+      "on_text": "Boiling",
+      "off_text": ""
+     }
+    },
+    {
+     "type": "indicator",
+     "settings": {
+      "value": "datasources[\"Hotpot\"][\"hotpotMarkI\"][\"d\"][\"warm\"]",
+      "on_text": "Wram"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 1
+   },
+   "col": {
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "Dispense",
+      "text": "กดน้ำ ^_^",
+      "color": "green",
+      "onClick": "microgear[\"F\"].chat(\"hotpotMarkI\",\"d\");"
+     }
+    }
+   ]
+  }
+ ],
+ "datasources": [
+  {
+   "name": "AVEC",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "esHD42XkS5qFyqM",
+    "secret": "NMbu0ySmFEzlyCJwfzjSnNH1y",
+    "alias": "smartuniversity",
+    "microgearRef": "RMUTL",
+    "topics": "/#",
+    "json_data": false,
+    "name": "AVEC"
+   }
+  },
+  {
+   "name": "4WDCar",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "ezA0UsVVmS1e6w3",
+    "secret": "ibxavB9NJfZFEZTPpkwt4Uyig",
+    "alias": "car",
+    "microgearRef": "4WD",
+    "topics": "/#",
+    "json_data": false
+   }
+  },
+  {
+   "name": "plug",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "D32hr6VC0TKcuBS",
+    "secret": "TnDXJ11aBlyjgJkmxiafq0xmi",
+    "alias": "nat_freeboard",
+    "microgearRef": "plugX",
+    "topics": "/#",
+    "json_data": false,
+    "name": "plug"
+   }
+  },
+  {
+   "name": "Hotpot",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "GKmeuVq3s55dIsp",
+    "secret": "Mq43amIm7ypbZYgS1te3Ey3RK",
+    "alias": "hotpotF",
+    "microgearRef": "F",
+    "topics": "/#",
+    "json_data": true,
+    "name": "Hotpot"
+   }
+  }
+ ],
+ "columns": 4
+}

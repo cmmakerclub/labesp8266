@@ -1,0 +1,38 @@
+#include <DHT.h>
+
+#define DHTPIN 12
+#define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
+DHT dht(DHTPIN, DHTTYPE);
+
+void read_sensor(float* t_dht, float* h_dht);
+
+void on_prepare_data(JsonObject * root) {
+  //float t_dht;
+  //float h_dht;
+  //read_sensor(&t_dht, &h_dht);
+
+  JsonObject& data = (*root)["d"];
+  JsonObject& info = (*root)["info"];
+
+  //    data["myName"] = ALIAS;
+  //    data["temp"] = t_dht;
+  //    data["humid"] = h_dht;
+  //    data["millis"] = millis();
+  data["myName"] = ALIAS;
+  data["warm"] = 0 + !digitalRead(RELAY_03_WARM_STATUS_PIN);
+  data["boiling"] = 0 + !digitalRead(RELAY_04_BOIL_STATUS_PIN);
+  
+};
+
+
+void read_sensor(float* t_dht, float* h_dht) {
+  static float _t_dht;
+  static float _h_dht;
+  _t_dht = dht.readTemperature();
+  _h_dht = dht.readHumidity();
+
+  if (!isnan(_t_dht)) {
+    *t_dht = _t_dht;
+    *h_dht = _h_dht;
+  }
+}
