@@ -36,9 +36,11 @@
   {
    "width": 1,
    "row": {
+    "3": 1,
     "4": 1
    },
    "col": {
+    "3": 2,
     "4": 2
    },
    "col_width": 1,
@@ -49,7 +51,7 @@
       "caption": "Dispense",
       "text": "กดน้ำ ^_^",
       "color": "green",
-      "onClick": "microgear[\"F\"].chat(\"hotpotMarkI\",\"d\");"
+      "onClick": "microgear[\"F\"].chat(\"hotpotMarkI\",\"ON\");"
      }
     }
    ]

@@ -9,7 +9,7 @@ void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
     delay(2000);
     digitalWrite(RELAY_02_REBOIL_PIN, HIGH);
   }
-  else if (msg2 == "d") {
+  else if (msg2 == "ON") {//dispense water
     digitalWrite(RELAY_01_DISPENSE_PIN, LOW);
     delay(1000);
     digitalWrite(RELAY_01_DISPENSE_PIN, HIGH);
