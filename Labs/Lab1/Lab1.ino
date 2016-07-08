@@ -23,8 +23,6 @@ void loop() {
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
-
-  Serial.println(digitalRead(BUTTON));
   if (digitalRead(BUTTON) == LOW)  {  
     analogWrite(BUZZER, 1023);
     digitalWrite(RELAY, LOW);
