@@ -53,6 +53,7 @@ void init_hardware() {
   Serial.println("Starting...");
   pinMode(LED, OUTPUT);
   pinMode(MOTOR, OUTPUT);
+  digitalWrite(LED, HIGH);
   digitalWrite(MOTOR, LOW);
 }
 

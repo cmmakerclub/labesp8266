@@ -5,7 +5,7 @@ void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
 
   if (msgin == "ON") {
     digitalWrite(LED, LOW);
-    digitalWrite(MOTOR, LOW);
+    digitalWrite(MOTOR, HIGH);
   }
   else if (msgin == "OFF") {
     digitalWrite(LED, HIGH);
