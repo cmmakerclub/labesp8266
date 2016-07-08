@@ -59,20 +59,6 @@ void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
   }
 
   Serial.println();
-
-  String stateStr = String(strState).substring(0, msglen);
-
-  Serial.print("Topic is ");
-  Serial.println(topic);
-
-  if (stateStr == "ON")
-  {
-    digitalWrite(LEDPin, LOW);
-  }
-  else if (stateStr == "OFF")
-  {
-    digitalWrite(LEDPin, HIGH);
-  }
 }
 
 void init_hardware() {
