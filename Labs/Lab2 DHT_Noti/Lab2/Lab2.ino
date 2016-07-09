@@ -16,7 +16,7 @@ String smartphone_key = "smartphone key";   //  Change your smartphone key
 String message = "Hello%20from%20ESPressoLITE"; //  Change your message
 
 #define DHTPIN 12
-#define DHTTYPE DHT22
+#define DHTTYPE DHT11
 
 WiFiClient client;
 DHT dht(DHTPIN, DHTTYPE);
