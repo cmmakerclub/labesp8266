@@ -5,16 +5,16 @@
 #include <MicroGear.h>
 #include <DHT.h>
 
+#include "CMMC_Blink.hpp"
+CMMC_Blink blinker;
+
 const char* ssid     = "ESPERT-002";
 const char* password = "espertap";
 
 #define APPID       "HelloCMMC"
 #define KEY         "v4MC7hEMyje06Mi"
 #define SECRET      "OZAJGnT21uLcmigeDXLNK2l6W"
-
 #define ALIAS       "plug001"
-
-
 
 WiFiClient client;
 AuthClient *authclient;
@@ -24,8 +24,11 @@ AuthClient *authclient;
 DHT dht(DHTPIN, DHTTYPE);
 
 int timer = 0;
-int onOffPin = 15;//control relay pin
+int relayPin = 15; //control relay pin
+
 MicroGear microgear(client);
+
+
 
 /* If a new message arrives, do this */
 void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
@@ -35,12 +38,12 @@ void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
   String msg2 = String((char*)msg);
 
   if (msg2 == "ON") {
-    analogWrite(onOffPin, 1023);
-
+    digitalWrite(relayPin, HIGH);
+    digitalWrite(LED_BUILTIN, LOW);
   }
   else if (msg2 == "OFF") {
-    analogWrite(onOffPin, 0);
-
+    digitalWrite(relayPin, LOW);
+    digitalWrite(LED_BUILTIN, HIGH);
   }
 }
 
@@ -70,7 +73,6 @@ void onConnected(char *attribute, uint8_t* msg, unsigned int msglen) {
 
 void setup() {
   /* Add Event listeners */
-
   /* Call onMsghandler() when new message arraives */
   microgear.on(MESSAGE, onMsghandler);
 
@@ -82,18 +84,26 @@ void setup() {
 
   /* Call onConnected() when NETPIE connection is established */
   microgear.on(CONNECTED, onConnected);
+  
+  pinMode(relayPin, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
 
+  dht.begin();
+  blinker.init();
   Serial.begin(115200);
   Serial.println("Starting...");
-
-  /* Initial WIFI, this is just a basic method to configure WIFI on ESP8266.                       */
-  /* You may want to use other method that is more complicated, but provide better user experience */
+  
+  blinker.blink(100, LED_BUILTIN);
+  delay(1000);
+  
   if (WiFi.begin(ssid, password)) {
     while (WiFi.status() != WL_CONNECTED) {
       delay(500);
       Serial.print(".");
     }
   }
+  
+  blinker.detach();
 
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
@@ -104,11 +114,6 @@ void setup() {
 
   /* connect to NETPIE to a specific APPID */
   microgear.connect(APPID);
-
-  pinMode(onOffPin, OUTPUT);
-  pinMode(LED_BUILTIN, OUTPUT);
-
-  dht.begin();
 }
 
 void loop() {
