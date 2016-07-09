@@ -1,7 +1,11 @@
+//  EXAMPLE CODE FOR NECTEC IOT CAMP 2016 by Chiang Mai Maker Club
+//  Device : ESPresso lite v2, DHT11, RELAY module
+//  Dashboard : DHT_dashboard
+//  Library : DHT-sensor-library
+
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <MicroGear.h>  // v 1.1.7
-#include <ESPert.h>
 #include "DHT.h"
 
 const char* ssid     = "ESPERT-002";  // Change your ssid wifi : @ESPertAP_001 or ESPERT-002
@@ -13,17 +17,50 @@ const char* password = "espertap";  // Change your password wifi : espertap
 #define SECRET  "T1eUhstPrXG86hyFtNTuFmpD0" // Change your SECRET
 #define ALIAS   "DHTFreeboard"       // Change your name
 
-#define LEDPin 2
 #define DHTPIN 12
 #define DHTTYPE DHT11
+#define RELAY 15
 
-ESPert espert;
 WiFiClient client;
 MicroGear microgear(client);
 DHT dht(DHTPIN, DHTTYPE);
 
-//void init_hardware();
-//void init_wifi();
+void init_wifi();
+void init_hardware();
+
+
+void setup() {
+  init_wifi();
+  init_hardware();
+  Serial.println("Init done...");
+}
+
+void loop() {
+  if (microgear.connected())
+  {
+    microgear.loop();
+
+    // อ่านค่าจากเซ็นเซอร์ DHt22
+    float t = dht.readTemperature();
+    float h = dht.readHumidity();
+
+    // ส่งค่าไปยัง netpie
+    microgear.chat("DHTFreeboard/Temperature", String(t));
+    microgear.chat("DHTFreeboard/Humidity", String(h));
+
+    Serial.print("Temperature = ");
+    Serial.print(t);
+    Serial.print("\t");
+    Serial.print("Humidity = ");
+    Serial.println(h);
+    delay(100);
+  }
+  else
+  {
+    Serial.println("connection lost, reconnect...");
+    microgear.connect(APPID);
+  }
+}
 
 /******************* microgear loop ***********************************/
 void onFoundgear(char *attribute, uint8_t* msg, unsigned int msglen) {
@@ -66,25 +103,17 @@ void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
 
   if (msgIN == "ON")
   {
-    digitalWrite(LEDPin, LOW);
+    digitalWrite(RELAY, LOW);
+    delay(10);
   }
   else if (msgIN == "OFF")
   {
-    digitalWrite(LEDPin, HIGH);
+    digitalWrite(RELAY, HIGH);
+    delay(10);
   }
 }
 
-void init_hardware() {
-  espert.init();
-  espert.oled.init();
-  delay(2000);
-
-  pinMode(LEDPin, OUTPUT);
-  digitalWrite(LEDPin, LOW);
-
-  dht.begin();
-}
-
+/******************* initial loop ***********************************/
 void init_wifi() {
   microgear.on(MESSAGE, onMsghandler);
   microgear.on(PRESENT, onFoundgear);
@@ -92,6 +121,7 @@ void init_wifi() {
   microgear.on(CONNECTED, onConnected);
 
   Serial.begin(115200);
+  delay(200);
 
   if (WiFi.begin(ssid, password)) {
     while (WiFi.status() != WL_CONNECTED) {
@@ -110,48 +140,9 @@ void init_wifi() {
   Serial.println("netpie.io connected.");
 }
 
-/************************* loop ***********************************/
-void setup() {
-  init_wifi();
-  init_hardware();
-  Serial.println("Init done...");
+void init_hardware() {
+  pinMode(RELAY, OUTPUT);
+  digitalWrite(RELAY, LOW);
+  dht.begin();
 }
 
-void loop() {
-  if (microgear.connected())
-  {
-    microgear.loop();
-
-    // อ่านค่าจากเซ็นเซอร์ DHt22
-    float t = dht.readTemperature();
-    float h = dht.readHumidity();
-
-    // ส่งค่าไปยัง netpie
-    microgear.chat("DHTFreeboard/Temperature", String(t));
-    microgear.chat("DHTFreeboard/Humidity", String(h));
-
-    espert.oled.clear();
-    espert.oled.setTextSize(1);
-    espert.oled.setTextColor(ESPERT_WHITE);
-    espert.oled.setCursor(0, 24);
-
-    espert.oled.println("   Hello NETPIE");
-    espert.oled.print("Temperature = ");
-    espert.oled.println(dht.readTemperature());
-    espert.oled.print("Humidity = ");
-    espert.oled.println(dht.readHumidity());
-    espert.oled.update();
-
-    Serial.print("Temperature = ");
-    Serial.print(t);
-    Serial.print("\t");
-    Serial.print("Humidity = ");
-    Serial.println(h);
-    delay(500);
-  }
-  else
-  {
-    Serial.println("connection lost, reconnect...");
-    microgear.connect(APPID);
-  }
-}
