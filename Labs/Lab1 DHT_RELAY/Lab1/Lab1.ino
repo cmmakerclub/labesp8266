@@ -53,7 +53,7 @@ void loop() {
     Serial.print("\t");
     Serial.print("Humidity = ");
     Serial.println(h);
-    delay(100);
+    delay(500);
   }
   else
   {
