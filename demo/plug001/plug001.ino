@@ -93,8 +93,8 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Starting...");
   
-  blinker.blink(100, LED_BUILTIN);
-  delay(1000);
+  blinker.blink(50, LED_BUILTIN);
+  delay(200);
   
   if (WiFi.begin(ssid, password)) {
     while (WiFi.status() != WL_CONNECTED) {
