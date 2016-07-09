@@ -148,8 +148,11 @@ void loop() {
         Serial.println(" *C ");
         //*******
         /* Chat with the microgear named ALIAS which is myself */
-        microgear.chat("nat_easy netpie/Humidity", (String)h);
-        microgear.chat("nat_easy netpie/Temperature", (String)t);
+        String _topic_h  = String(ALIAS) + "/Humidity";
+        String _topic_t  = String(ALIAS) + "/Temperature";
+        
+        microgear.chat(const_cast<char*>(_topic_h.c_str()), (String)h);
+        microgear.chat(const_cast<char*>(_topic_t.c_str()), (String)t);
       }
       timer = 0;
     }
