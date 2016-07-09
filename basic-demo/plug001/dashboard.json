@@ -19,7 +19,7 @@
      "type": "gauge",
      "settings": {
       "title": "ความชื้น",
-      "value": "datasources[\"netpie\"][\"/HelloCMMC/gearname/plug001/humid\"]",
+      "value": "datasources[\"plug001\"][\"/HelloCMMC/gearname/plug001/humid\"]",
       "units": "%RH",
       "min_value": 0,
       "max_value": 100
@@ -43,7 +43,7 @@
      "type": "Toggle",
      "settings": {
       "caption": "เปิด - ปิดไฟ",
-      "state": "datasources[\"netpie\"][\"/HelloCMMC/gearname/plug001\"] == \"ON\"",
+      "state": "datasources[\"plug001\"][\"/HelloCMMC/gearname/plug001\"] == \"ON\"",
       "ontext": "ON",
       "offtext": "OFF",
       "onaction": "microgear[\"MR1\"].chat(\"plug001\",\"ON\")",
@@ -68,7 +68,7 @@
      "type": "gauge",
      "settings": {
       "title": "อุณหภูมิ",
-      "value": "datasources[\"netpie\"][\"/HelloCMMC/gearname/plug001/temp\"]",
+      "value": "datasources[\"plug001\"][\"/HelloCMMC/gearname/plug001/temp\"]",
       "units": "องศาเซลเซียส",
       "min_value": 0,
       "max_value": "80"

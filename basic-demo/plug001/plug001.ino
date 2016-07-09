@@ -104,6 +104,8 @@ void setup() {
   }
 
   blinker.detach();
+  // turn off led
+  digitalWrite(LED_BUILTIN, HIGH);
 
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
