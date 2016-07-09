@@ -84,7 +84,7 @@ void setup() {
 
   /* Call onConnected() when NETPIE connection is established */
   microgear.on(CONNECTED, onConnected);
-  
+
   pinMode(relayPin, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
 
@@ -92,17 +92,17 @@ void setup() {
   blinker.init();
   Serial.begin(115200);
   Serial.println("Starting...");
-  
+
   blinker.blink(50, LED_BUILTIN);
   delay(200);
-  
+
   if (WiFi.begin(ssid, password)) {
     while (WiFi.status() != WL_CONNECTED) {
       delay(500);
       Serial.print(".");
     }
   }
-  
+
   blinker.detach();
 
   Serial.println("WiFi connected");
@@ -125,7 +125,7 @@ void loop() {
     microgear.loop();
 
     if (timer >= 2000) {
-      Serial.println("Publish...");
+      Serial.print("Publish... ");
       //******  read DHT sensor very 2sec
       float h = 0.00f;
       float t = 0.00f;
@@ -146,10 +146,10 @@ void loop() {
         Serial.print("Temperature: ");
         Serial.print(t);
         Serial.println(" *C ");
-        
-        /* Chat with the microgear named ALIAS which is myself */        
-        microgear.chat("plug001/temp", (String)h);
-        microgear.chat("plug001/humid", (String)t);
+
+        /* Chat with the microgear named ALIAS which is myself */
+        microgear.chat("plug001/temp", (String)t);
+        microgear.chat("plug001/humid", (String)h);
       }
       timer = 0;
     }
