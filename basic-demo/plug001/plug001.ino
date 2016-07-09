@@ -146,13 +146,10 @@ void loop() {
         Serial.print("Temperature: ");
         Serial.print(t);
         Serial.println(" *C ");
-        //*******
-        /* Chat with the microgear named ALIAS which is myself */
-        String _topic_h  = String(ALIAS) + "/Humidity";
-        String _topic_t  = String(ALIAS) + "/Temperature";
         
-        microgear.chat(const_cast<char*>(_topic_h.c_str()), (String)h);
-        microgear.chat(const_cast<char*>(_topic_t.c_str()), (String)t);
+        /* Chat with the microgear named ALIAS which is myself */        
+        microgear.chat("plug001/temp", (String)h);
+        microgear.chat("plug001/humid", (String)t);
       }
       timer = 0;
     }
