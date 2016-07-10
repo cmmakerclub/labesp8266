@@ -8,7 +8,7 @@
 #include "CMMC_Blink.hpp"
 CMMC_Blink blinker;
 
-const char* ssid     = "@ESPertAP_001";
+const char* ssid     = "ESPERT-002";
 const char* password = "espertap";
 
 #define APPID       "HelloCMMC"
