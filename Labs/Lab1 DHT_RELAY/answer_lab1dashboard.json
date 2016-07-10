@@ -6,12 +6,14 @@
   {
    "width": 1,
    "row": {
-    "3": 1,
+    "2": 5,
+    "3": 9,
     "4": 1
    },
    "col": {
+    "2": 2,
     "3": 2,
-    "4": 4
+    "4": 3
    },
    "col_width": 1,
    "widgets": [
@@ -19,11 +21,11 @@
      "type": "Toggle",
      "settings": {
       "caption": "เปิด - ปิดรีเลย์",
-      "state": "datasources[\"DHT_Freeboard\"][\"/HelloCMMC/gearname/DHTFreeboard\"] == \"ON\"",
+      "state": "datasources[\"lab1_freeboard\"][\"/HelloCMMC/gearname/plug001\"] == \"ON\"",
       "ontext": "ON",
       "offtext": "OFF",
-      "onaction": "microgear[\"DHT\"].chat(\"DHTFreeboard\",\"ON\");",
-      "offaction": "microgear[\"DHT\"].chat(\"DHTFreeboard\",\"OFF\");"
+      "onaction": "microgear[\"LAB1Gear\"].chat(\"plug001\",\"ON\");",
+      "offaction": "microgear[\"LAB1Gear\"].chat(\"plug001\",\"OFF\");"
      }
     }
    ]
@@ -31,10 +33,12 @@
   {
    "width": 1,
    "row": {
+    "2": 9,
     "3": 1,
     "4": 1
    },
    "col": {
+    "2": 1,
     "3": 1,
     "4": 2
    },
@@ -44,7 +48,7 @@
      "type": "gauge",
      "settings": {
       "title": "อุณหภูมิ",
-      "value": "datasources[\"DHT_Freeboard\"][\"/HelloCMMC/gearname/DHTFreeboard/Temperature\"]",
+      "value": "datasources[\"lab1_freeboard\"][\"/HelloCMMC/gearname/plug001/temp\"]",
       "units": "องศาเซลเซียส",
       "min_value": 0,
       "max_value": 100
@@ -55,12 +59,14 @@
   {
    "width": 1,
    "row": {
+    "2": 1,
     "3": 1,
     "4": 1
    },
    "col": {
-    "3": 1,
-    "4": 3
+    "2": 1,
+    "3": 2,
+    "4": 1
    },
    "col_width": 1,
    "widgets": [
@@ -68,7 +74,7 @@
      "type": "gauge",
      "settings": {
       "title": "ความชื้น",
-      "value": "datasources[\"DHT_Freeboard\"][\"/HelloCMMC/gearname/DHTFreeboard/Humidity\"]",
+      "value": "datasources[\"lab1_freeboard\"][\"/HelloCMMC/gearname/plug001/humid\"]",
       "units": "%RH",
       "min_value": 0,
       "max_value": 100
@@ -80,12 +86,37 @@
    "width": 1,
    "row": {
     "2": 1,
-    "3": 5,
+    "3": 13,
     "4": 5
    },
    "col": {
     "2": 2,
     "3": 2,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "indicator",
+     "settings": {
+      "title": "รีเลย์",
+      "value": "datasources[\"lab1_freeboard\"][\"/HelloCMMC/gearname/plug001\"] == \"ON\"",
+      "on_text": "ON",
+      "off_text": "OFF"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "2": 9,
+    "3": 9,
+    "4": 1
+   },
+   "col": {
+    "2": 2,
+    "3": 1,
     "4": 4
    },
    "col_width": 1,
@@ -96,7 +127,7 @@
       "caption": "On",
       "text": "เปิดรีเลย์",
       "color": "green",
-      "onClick": "microgear['DHT'].chat('DHTFreeboard','ON');"
+      "onClick": "microgear['LAB1Gear'].chat('plug001', 'ON');"
      }
     },
     {
@@ -105,28 +136,15 @@
       "caption": "OFF",
       "text": "ปิดรีเลย์",
       "color": "red",
-      "onClick": "microgear['DHT'].chat('DHTFreeboard','OFF');"
+      "onClick": "microgear['LAB1Gear'].chat('plug001', 'OFF');"
      }
-    }
-   ]
-  },
-  {
-   "width": 1,
-   "row": {
-    "4": 1
-   },
-   "col": {
-    "4": 1
-   },
-   "col_width": 1,
-   "widgets": [
+    },
     {
-     "type": "indicator",
+     "type": "text_widget",
      "settings": {
-      "title": "รีเลย์",
-      "value": "datasources[\"DHT_Freeboard\"][\"/HelloCMMC/gearname/DHTFreeboard\"] == \"ON\"",
-      "on_text": "datasources[\"DHT_Freeboard\"][\"/HelloCMMC/gearname/DHTFreeboard\"]",
-      "off_text": "datasources[\"DHT_Freeboard\"][\"/HelloCMMC/gearname/DHTFreeboard\"]"
+      "size": "regular",
+      "value": "datasources[\"lab1_freeboard\"][\"/HelloCMMC/gearname/plug001\"]",
+      "animate": false
      }
     }
    ]
@@ -134,14 +152,14 @@
  ],
  "datasources": [
   {
-   "name": "DHT_Freeboard",
+   "name": "lab1_freeboard",
    "type": "netpie_microgear",
    "settings": {
     "appid": "HelloCMMC",
     "key": "Vtl7QDkLXapJKje",
     "secret": "l6kYCzuR9KuinmwoQqqhGOh0l",
-    "alias": "DHTFreeboard",
-    "microgearRef": "DHT",
+    "alias": "lab1_freeboard",
+    "microgearRef": "LAB1Gear",
     "topics": "/#",
     "json_data": false
    }
