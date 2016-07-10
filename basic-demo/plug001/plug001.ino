@@ -28,8 +28,6 @@ int relayPin = 15; //control relay pin
 
 MicroGear microgear(client);
 
-
-
 /* If a new message arrives, do this */
 void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
   Serial.print("Incoming message --> ");
@@ -103,19 +101,22 @@ void setup() {
     }
   }
 
-  blinker.detach();
-  // turn off led
-  digitalWrite(LED_BUILTIN, HIGH);
+
+
 
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
-
+  blinker.blink(200, LED_BUILTIN);
   /* Initial with KEY, SECRET and also set the ALIAS here */
   microgear.init(KEY, SECRET, ALIAS);
 
   /* connect to NETPIE to a specific APPID */
   microgear.connect(APPID);
+
+  // connected to netpie so turn off the led
+  blinker.detach();
+  digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void loop() {
@@ -140,8 +141,8 @@ void loop() {
       if (isnan(h) || isnan(t)) {
         Serial.println("Failed to read from DHT sensor!");
         //return;
-      } else {
-
+      }
+      else {
         Serial.print("Humidity: ");
         Serial.print(h);
         Serial.print(" %\t");
@@ -150,8 +151,16 @@ void loop() {
         Serial.println(" *C ");
 
         /* Chat with the microgear named ALIAS which is myself */
-        microgear.chat("plug001/temp", (String)t);
-        microgear.chat("plug001/humid", (String)h);
+        //microgear.chat("plug001/temp", (String)t);
+        //microgear.chat("plug001/humid", (String)h);
+
+        char topic_temp[MAXTOPICSIZE];
+        char topic_humid[MAXTOPICSIZE];
+        sprintf(topic_temp, "/gearname/%s/temp", ALIAS);
+        sprintf(topic_humid, "/gearname/%s/humid", ALIAS);
+        //retain message
+        microgear.publish(topic_temp, String(t), true);
+        microgear.publish(topic_humid, String(h), true);
       }
       timer = 0;
     }
