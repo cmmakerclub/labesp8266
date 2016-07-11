@@ -1,21 +1,28 @@
-//  EXAMPLE CODE FOR NECTEC IOT CAMP 2016 by Chiang Mai Maker Club
-//  Device : ESPresso lite v2, DHT11, RELAY module
-//  Dashboard : DHT_dashboard
-//  Library : DHT-sensor-library
+/******************************************************************************
+  Project  : NECTEC IoT Camp 2016
+  Compiler : Arduino 1.6.7
+  Board    : ESPresso Lite V2
+  Device   : DHT11, RELAY module
+  Dashboard : DHT_dashboard
+  Library : DHT-sensor-library, CMMC_Blink
+  Author   : Chiang Mai Maker Club
+*******************************************************************************/
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <MicroGear.h>  // v 1.1.7
 #include "DHT.h"
+#include "CMMC_Blink.hpp"
+CMMC_Blink blinker;
 
-const char* ssid     = "ESPERT-002";  // Change your ssid wifi : @ESPertAP_001 or ESPERT-002
-const char* password = "espertap";  // Change your password wifi : espertap
+const char* ssid     = "ESPERT-3020";  // Change your ssid wifi 
+const char* password = "espertap";  // Change your password wifi
 
 // NETPIE.io : man_DHT
 #define APPID   "HelloCMMC"             // Change your appID
 #define KEY     "3CGFOspur1y1hVF"       // Change your Key
 #define SECRET  "T1eUhstPrXG86hyFtNTuFmpD0" // Change your SECRET
-#define ALIAS   "DHTFreeboard"       // Change your name
+#define ALIAS   "lab1"              // Change your name
 
 #define DHTPIN 12
 #define DHTTYPE DHT11
@@ -120,6 +127,8 @@ void init_wifi() {
   microgear.on(ABSENT, onLostgear);
   microgear.on(CONNECTED, onConnected);
 
+  blinker.init();
+  blinker.blink(50, LED_BUILTIN);
   Serial.begin(115200);
   delay(200);
 
@@ -129,14 +138,17 @@ void init_wifi() {
       Serial.print(".");
     }
   }
+
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
+  blinker.blink(200, LED_BUILTIN);
 
   Serial.println("connecting netpie.io...");
   //microgear.resetToken();
   microgear.init(KEY, SECRET, ALIAS);
   microgear.connect(APPID);
+  blinker.detach();
   Serial.println("netpie.io connected.");
 }
 

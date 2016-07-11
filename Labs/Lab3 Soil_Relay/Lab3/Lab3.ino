@@ -1,20 +1,27 @@
-//  EXAMPLE CODE FOR NECTEC IOT CAMP 2016 by Chiang Mai Maker Club
-//  Device : ESPresso lite v2, Soil moisture, RELAY module
-//  Dashboard : Soil_dashboard
+/******************************************************************************
+  Project  : NECTEC IoT Camp 2016
+  Compiler : Arduino 1.6.7
+  Board    : ESPresso Lite V2
+  Device   : Soil moisture, RELAY module
+  Dashboard : Soil_dashboard
+  Library : DHT-sensor-library, CMMC_Blink
+  Author   : Chiang Mai Maker Club
+*******************************************************************************/
 
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <MicroGear.h>  // v 1.1.7
+#include "CMMC_Blink.hpp"
+CMMC_Blink blinker;
 
-const char* ssid     = "ssid wifi";  // Change your ssid wifi
-const char* password = "password wifi";  // Change your password wifi
+const char* ssid     = "ESPERT-3020";  // Change your ssid wifi 
+const char* password = "espertap";  // Change your password wifi
 
-// NETPIE.io : HelloNETPIE : NETPIE_01
 #define APPID   "HelloNETPIE"             // Change your appID
 #define KEY     "xxxxxxxxxxx"             // Change your Key
 #define SECRET  "xxxxxxxxxxx"             // Change your SECRET
-#define ALIAS   "SoilFreeboard"           // Change your name
+#define ALIAS   "Soilsensor"           // Change your name
 
 #define SOIL 13
 #define RELAY 14
@@ -117,6 +124,8 @@ void init_wifi() {
   microgear.on(ABSENT, onLostgear);
   microgear.on(CONNECTED, onConnected);
 
+  blinker.init();
+  blinker.blink(50, LED_BUILTIN);
   Serial.begin(115200);
   delay(200);
 
@@ -129,11 +138,13 @@ void init_wifi() {
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
-
+  blinker.blink(200, LED_BUILTIN);
+  
   Serial.println("connecting netpie.io...");
   //microgear.resetToken();
   microgear.init(KEY, SECRET, ALIAS);
   microgear.connect(APPID);
+  blinker.detach();
   Serial.println("netpie.io connected.");
 }
 

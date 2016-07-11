@@ -1,19 +1,25 @@
-//  EXAMPLE CODE FOR NECTEC IOT CAMP 2016 by Chiang Mai Maker Club
-//  Device : ESPresso lite v2, DHT11, RELAY module
-//  Dashboard : DHT_dashboard
-//  Library : DHT-sensor-library
+/******************************************************************************
+  Project  : NECTEC IoT Camp 2016
+  Compiler : Arduino 1.6.7
+  Board    : ESPresso Lite V2
+  Device   : DHT11
+  Dashboard : -
+  Library : DHT-sensor-library, CMMC_Blink
+  Author   : Chiang Mai Maker Club
+*******************************************************************************/
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
-#include <MicroGear.h>  // v 1.1.7
 #include <ESP8266HTTPClient.h>  // v 1.1.1
 #include "DHT.h"
+#include "CMMC_Blink.hpp"
+CMMC_Blink blinker;
 
-const char* ssid     = "ssid wifi";  // Change your ssid wifi
-const char* password = "password wifi";  // Change your password wifi
+const char* ssid     = "ESPERT-3020";  // Change your ssid wifi 
+const char* password = "espertap";  // Change your password wifi
 
-String smartphone_key = "smartphone key";   //  Change your smartphone key
-String message = "Hello%20from%20ESPressoLITE"; //  Change your message
+String smartphone_key = "your smartphone key";   //  Change your 
+String message = "Hello%20from%20ESPressoLite-V2"; //  Change your message
 
 #define DHTPIN 12
 #define DHTTYPE DHT11
@@ -37,7 +43,7 @@ void loop() {
   float h = dht.readHumidity();
 
   if (WiFi.status() == WL_CONNECTED) {
-    if (t >= 30) {  //  if Temperature > 30 c
+    if (t >= 30) {  //  if temperature > 30 c then sent message to your smartphone
       Serial.println("Sent message....");
       String msg = "http://www.espert.io/MySmartphone/send?key=" + smartphone_key + "&message=" + message;
       doHttpGet(msg);
@@ -57,8 +63,11 @@ void loop() {
   Serial.println(h);
   delay(200);
 }
+
 /******************* initial loop ***********************************/
 void init_wifi() {
+  blinker.init();
+  blinker.blink(50, LED_BUILTIN);
   Serial.begin(115200);
   delay(200);
 
@@ -71,10 +80,12 @@ void init_wifi() {
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
+  blinker.blink(200, LED_BUILTIN);
 }
 
 void init_hardware() {
   dht.begin();
+  blinker.detach();
 }
 
 void doHttpGet(String msg) {
