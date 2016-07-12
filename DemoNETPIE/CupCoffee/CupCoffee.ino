@@ -6,6 +6,8 @@
 #include <MicroGear.h>
 #include "timer.hpp""
 #include "max6675.h"
+#include "CMMC_Blink.hpp"
+CMMC_Blink blinker;
 
 const char* ssid     = "ESPERT-002";
 const char* password = "espertap";
@@ -45,17 +47,9 @@ MicroGear microgear(client);
 #include "_receive.h"
 #include "utils.h"
 
+void init_hardware();
 void init_wifi();
 void microgear_loop();
-
-void init_hardware() {
-  Serial.begin(115200);
-  Serial.println("Starting...");
-  pinMode(LED, OUTPUT);
-  pinMode(MOTOR, OUTPUT);
-  digitalWrite(LED, HIGH);
-  digitalWrite(MOTOR, LOW);
-}
 
 void setup() {
   _constructor();
@@ -66,6 +60,19 @@ void setup() {
 
 void loop() {
   microgear_loop();
+}
+
+void init_hardware() {
+  blinker.init();
+  Serial.begin(115200);
+  Serial.println("Starting...");
+  blinker.blink(50, LED_BUILTIN);
+  delay(200);
+  
+  pinMode(LED, OUTPUT);
+  pinMode(MOTOR, OUTPUT);
+  digitalWrite(LED, HIGH);
+  digitalWrite(MOTOR, LOW);
 }
 
 void microgear_loop() {
@@ -92,6 +99,7 @@ void init_wifi() {
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
+  blinker.blink(200, LED_BUILTIN);
   //microgear.resetToken();
 }
 
