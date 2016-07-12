@@ -66,25 +66,6 @@
       "color": "blue",
       "onClick": "microgear[\"4WD\"].chat(\"car\",\"W\");"
      }
-    },
-    {
-     "type": "Button",
-     "settings": {
-      "caption": "S",
-      "text": "ถอย",
-      "color": "yellow",
-      "onClick": "microgear[\"4WD\"].chat(\"car\",\"S\");"
-     }
-    },
-    {
-     "type": "Toggle",
-     "settings": {
-      "caption": "use keyboard  W A S D B",
-      "ontext": "ON",
-      "offtext": "OFF",
-      "onaction": " document.addEventListener('keydown', function(event) {     \tvar x = event.which || event.keyCode; \t     if(x == 87) { \t\tmicrogear[\"4WD\"].chat(\"car\",\"W\"); \t\t\t          \t}else if(x == 83) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"S\"); \t \t\t \t} else if(x == 65) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"A\"); \t\t \t} else if(x == 68) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"D\"); \t\t \t} else if(x == 66) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"B\"); \t\t \t}  \t    });",
-      "offaction": "location.reload();"
-     }
     }
    ]
   },
@@ -92,7 +73,7 @@
    "width": 1,
    "row": {
     "3": 1,
-    "4": 1
+    "4": 5
    },
    "col": {
     "3": 2,
@@ -115,7 +96,7 @@
    "width": 1,
    "row": {
     "3": 1,
-    "4": 1
+    "4": 5
    },
    "col": {
     "3": 3,
@@ -130,15 +111,6 @@
       "text": "เลี้ยวขวา",
       "color": "white",
       "onClick": "microgear[\"4WD\"].chat(\"car\",\"D\");"
-     }
-    },
-    {
-     "type": "Button",
-     "settings": {
-      "caption": "B",
-      "text": "หยุด",
-      "color": "red",
-      "onClick": "microgear[\"4WD\"].chat(\"car\",\"B\");"
      }
     }
    ]
@@ -183,6 +155,83 @@
      }
     }
    ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 5
+   },
+   "col": {
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "B",
+      "text": "หยุด",
+      "color": "red",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"B\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 1
+   },
+   "col": {
+    "4": 4
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Toggle",
+     "settings": {
+      "caption": "use keyboard  W A S D B",
+      "state": "",
+      "ontext": "ON",
+      "offtext": "OFF",
+      "onaction": "document.addEventListener('keydown', function(event) {     \tvar x = event.which || event.keyCode; \t     if(x == 87) { \t\tmicrogear[\"4WD\"].chat(\"car\",\"W\"); \t\t\t          \t}else if(x == 83) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"S\"); \t \t\t \t} else if(x == 65) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"A\"); \t\t \t} else if(x == 68) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"D\"); \t\t \t} else if(x == 66) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"B\"); \t\t \t}  \t    });",
+      "offaction": "location.reload();",
+      "onCreatedAction": ""
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 9
+   },
+   "col": {
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "S",
+      "text": "ถอย",
+      "color": "yellow",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"S\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 1
+   },
+   "col": {
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": []
   }
  ],
  "datasources": [

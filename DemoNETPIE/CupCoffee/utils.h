@@ -52,7 +52,7 @@ void _constructor() {
   _info["flash_id"] = String(ESP.getFlashChipId(), HEX);
   _info["chip_id"] = String(ESP.getChipId(), HEX);
   _info["mac"] = String(WiFi.macAddress().c_str());
-  //  _info["core"] =  String(ESP.getCoreVersion().c_str());
+  _info["core"] =  String(ESP.getCoreVersion().c_str());
   _info["sdk"] = String(ESP.getSdkVersion());
 
   _r["info"] = _info;
