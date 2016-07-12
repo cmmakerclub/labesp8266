@@ -8,7 +8,7 @@
 #include "CMMC_Blink.hpp"
 CMMC_Blink blinker;
 
-const char* ssid     = "ESPERT-002";
+const char* ssid     = "ESPERT-3020";
 const char* password = "espertap";
 
 #define APPID       "HelloCMMC"
@@ -101,9 +101,6 @@ void setup() {
     }
   }
 
-
-
-
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
@@ -167,10 +164,12 @@ void loop() {
     else timer += 100;
   }
   else {
+    blinker.blink(100);
     Serial.println("connection lost, reconnect...");
     if (timer >= 5000) {
       microgear.connect(APPID);
       timer = 0;
+      blinker.detach();      
     }
     else timer += 100;
   }
