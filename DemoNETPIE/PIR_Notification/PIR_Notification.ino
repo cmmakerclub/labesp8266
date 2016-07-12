@@ -34,11 +34,11 @@ void loop() {
     bool detect = digitalRead(PIR);
     if (detect == HIGH) {
       delay(200);
-      Serial.println("Detect : Off");
+      Serial.println("Detect : ON");
       digitalWrite(LED, LOW);
       doHttpGet();
     } else {
-      Serial.println("Detect : Off");
+      Serial.println("Detect : OFF");
       digitalWrite(LED, HIGH);
     }
     delay(500);

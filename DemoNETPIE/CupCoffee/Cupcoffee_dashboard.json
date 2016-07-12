@@ -1,0 +1,79 @@
+{
+ "version": "application/octet-stream",
+ "allow_edit": true,
+ "plugins": [],
+ "panes": [
+  {
+   "width": 1,
+   "row": {
+    "2": 1,
+    "3": 5,
+    "4": 1
+   },
+   "col": {
+    "2": 2,
+    "3": 2,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "On",
+      "text": "เปิดไฟ",
+      "color": "green",
+      "onClick": "microgear['cup'].chat('cupcoff','ON');"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "OFF",
+      "text": "ปิดไฟ",
+      "color": "red",
+      "onClick": "microgear['cup'].chat('cupcoff','OFF');"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 1
+   },
+   "col": {
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "Thermocouple",
+      "value": "datasources[\"CupCoffee\"][\"cupcoff\"][\"d\"][\"temp\"]",
+      "units": "C",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  }
+ ],
+ "datasources": [
+  {
+   "name": "CupCoffee",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "TYEA6H4XYIfNYs4",
+    "secret": "z1sQjdNaSwtOk6N4IwpLVlQkI",
+    "alias": "cupcoff",
+    "microgearRef": "cup",
+    "topics": "/#",
+    "json_data": true
+   }
+  }
+ ],
+ "columns": 4
+}
