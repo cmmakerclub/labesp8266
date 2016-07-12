@@ -201,20 +201,6 @@
    }
   },
   {
-   "name": "plug",
-   "type": "netpie_microgear",
-   "settings": {
-    "appid": "HelloCMMC",
-    "key": "D32hr6VC0TKcuBS",
-    "secret": "TnDXJ11aBlyjgJkmxiafq0xmi",
-    "alias": "nat_freeboard",
-    "microgearRef": "plugX",
-    "topics": "/#",
-    "json_data": false,
-    "name": "plug"
-   }
-  },
-  {
    "name": "Hotpot",
    "type": "netpie_microgear",
    "settings": {

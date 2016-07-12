@@ -70,33 +70,6 @@
  ],
  "datasources": [
   {
-   "name": "AVEC",
-   "type": "netpie_microgear",
-   "settings": {
-    "appid": "HelloCMMC",
-    "key": "esHD42XkS5qFyqM",
-    "secret": "NMbu0ySmFEzlyCJwfzjSnNH1y",
-    "alias": "smartuniversity",
-    "microgearRef": "RMUTL",
-    "topics": "/#",
-    "json_data": false,
-    "name": "AVEC"
-   }
-  },
-  {
-   "name": "4WDCar",
-   "type": "netpie_microgear",
-   "settings": {
-    "appid": "HelloCMMC",
-    "key": "ezA0UsVVmS1e6w3",
-    "secret": "ibxavB9NJfZFEZTPpkwt4Uyig",
-    "alias": "car",
-    "microgearRef": "4WD",
-    "topics": "/#",
-    "json_data": false
-   }
-  },
-  {
    "name": "plug",
    "type": "netpie_microgear",
    "settings": {
