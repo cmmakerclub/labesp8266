@@ -1,0 +1,232 @@
+{
+ "version": "application/octet-stream",
+ "allow_edit": true,
+ "plugins": [],
+ "panes": [
+  {
+   "title": "CupCoffee",
+   "width": 1,
+   "row": {
+    "4": 1
+   },
+   "col": {
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "อุณภูมิน้ำในแก้ว",
+      "value": "datasources[\"CupCoffee\"][\"cupcoff\"][\"d\"][\"temp\"]",
+      "units": "'C",
+      "min_value": 0,
+      "max_value": 100
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "ON",
+      "text": "ปั่นน้ำในแก้ว",
+      "color": "green",
+      "onClick": "microgear['cup'].chat('cupcoff','ON');"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "OFF",
+      "text": "หยุดปั่น",
+      "color": "red",
+      "onClick": "microgear['cup'].chat('cupcoff','OFF');"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 1
+   },
+   "col": {
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "W",
+      "text": "เดินหน้า",
+      "color": "blue",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"W\");"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "S",
+      "text": "ถอย",
+      "color": "yellow",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"S\");"
+     }
+    },
+    {
+     "type": "Toggle",
+     "settings": {
+      "caption": "ใช็ keyboard  W A S D B ควบคุมรถ",
+      "ontext": "ON",
+      "offtext": "OFF",
+      "onaction": " document.addEventListener('keydown', function(event) {     \tvar x = event.which || event.keyCode; \t     if(x == 87) { \t\tmicrogear[\"4WD\"].chat(\"car\",\"W\"); \t\t\t          \t}else if(x == 83) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"S\"); \t \t\t \t} else if(x == 65) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"A\"); \t\t \t} else if(x == 68) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"D\"); \t\t \t} else if(x == 66) {  \t\tmicrogear[\"4WD\"].chat(\"car\",\"B\"); \t\t \t}  \t    });",
+      "offaction": "location.reload();"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 1
+   },
+   "col": {
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "A",
+      "text": "เลี้ยวซ้าย",
+      "color": "white",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"A\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 1
+   },
+   "col": {
+    "4": 4
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "D",
+      "text": "เลี้ยวขวา",
+      "color": "white",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"D\");"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "B",
+      "text": "หยุด",
+      "color": "red",
+      "onClick": "microgear[\"4WD\"].chat(\"car\",\"B\");"
+     }
+    }
+   ]
+  },
+  {
+   "title": "กาต้มน้ำ",
+   "width": 1,
+   "row": {
+    "4": 13
+   },
+   "col": {
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "indicator",
+     "settings": {
+      "title": "Hotpot status",
+      "value": "datasources[\"Hotpot\"][\"hotpotMarkI\"][\"d\"][\"boiling\"]",
+      "on_text": "Boiling"
+     }
+    },
+    {
+     "type": "indicator",
+     "settings": {
+      "value": "datasources[\"Hotpot\"][\"hotpotMarkI\"][\"d\"][\"warm\"]",
+      "on_text": "Warm"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "Dispense",
+      "text": "กดน้ำ",
+      "color": "blue",
+      "onClick": "microgear[\"F\"].chat(\"hotpotMarkI\",\"ON\");"
+     }
+    }
+   ]
+  }
+ ],
+ "datasources": [
+  {
+   "name": "CupCoffee",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "TYEA6H4XYIfNYs4",
+    "secret": "z1sQjdNaSwtOk6N4IwpLVlQkI",
+    "alias": "cupcoff",
+    "microgearRef": "cup",
+    "topics": "/#",
+    "json_data": true
+   }
+  },
+  {
+   "name": "4WDCar",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "ezA0UsVVmS1e6w3",
+    "secret": "ibxavB9NJfZFEZTPpkwt4Uyig",
+    "alias": "car",
+    "microgearRef": "4WD",
+    "topics": "/#",
+    "json_data": false
+   }
+  },
+  {
+   "name": "plug",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "D32hr6VC0TKcuBS",
+    "secret": "TnDXJ11aBlyjgJkmxiafq0xmi",
+    "alias": "nat_freeboard",
+    "microgearRef": "plugX",
+    "topics": "/#",
+    "json_data": false,
+    "name": "plug"
+   }
+  },
+  {
+   "name": "Hotpot",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloCMMC",
+    "key": "GKmeuVq3s55dIsp",
+    "secret": "Mq43amIm7ypbZYgS1te3Ey3RK",
+    "alias": "hotpotF",
+    "microgearRef": "F",
+    "topics": "/#",
+    "json_data": true
+   }
+  }
+ ],
+ "columns": 4
+}
