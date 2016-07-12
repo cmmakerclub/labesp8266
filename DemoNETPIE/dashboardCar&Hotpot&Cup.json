@@ -185,32 +185,6 @@
  ],
  "datasources": [
   {
-   "name": "CupCoffee",
-   "type": "netpie_microgear",
-   "settings": {
-    "appid": "HelloCMMC",
-    "key": "TYEA6H4XYIfNYs4",
-    "secret": "z1sQjdNaSwtOk6N4IwpLVlQkI",
-    "alias": "cupcoff",
-    "microgearRef": "cup",
-    "topics": "/#",
-    "json_data": true
-   }
-  },
-  {
-   "name": "4WDCar",
-   "type": "netpie_microgear",
-   "settings": {
-    "appid": "HelloCMMC",
-    "key": "ezA0UsVVmS1e6w3",
-    "secret": "ibxavB9NJfZFEZTPpkwt4Uyig",
-    "alias": "car",
-    "microgearRef": "4WD",
-    "topics": "/#",
-    "json_data": false
-   }
-  },
-  {
    "name": "Hotpot",
    "type": "netpie_microgear",
    "settings": {
