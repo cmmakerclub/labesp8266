@@ -107,24 +107,26 @@ void loop() {
     microgear.loop();
 
     if (digitalRead(13) == 1) {
+      oled.clear();
       oled.setCursor(64, 25);
       oled.setTextSize(10);
       Serial.println(on_off);
       if (on_off == 1)
       {
-        oled.print("0");
+        oled.print("1");
         microgear.chat("plugDIM001", "255");
         on_off = 0;
       }
       else
       {
-        oled.print("1");
+        oled.print("0");
         microgear.chat("plugDIM001", "0");
         on_off = 1;
       }
       oled.update();
     }
     if (digitalRead(12) == 1) {
+      oled.clear();
       if (dim <= 255)
       {
         dim += 25;
@@ -140,6 +142,7 @@ void loop() {
       microgear.chat("plugDIM001", (String)dim);
     }
     if (digitalRead(14) == 1) {
+      oled.clear();
       if (dim >= 0)
       {
         dim -= 25;
@@ -155,7 +158,6 @@ void loop() {
       microgear.chat("plugDIM001", (String)dim);
     }
     delay(400);
-    oled.clear();
   }
   else {
     Serial.println("connection lost, reconnect...");
