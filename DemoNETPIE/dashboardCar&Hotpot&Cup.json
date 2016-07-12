@@ -160,15 +160,17 @@
      "type": "indicator",
      "settings": {
       "title": "Hotpot status",
-      "value": "datasources[\"Hotpot\"][\"hotpotMarkI\"][\"d\"][\"boiling\"]",
-      "on_text": "Boiling"
+      "value": "datasources[\"Hotpot\"][\"hotpotMarkI\"][\"d\"][\"warm\"] == 0",
+      "on_text": "Boiling",
+      "off_text": "Boiling"
      }
     },
     {
      "type": "indicator",
      "settings": {
-      "value": "datasources[\"Hotpot\"][\"hotpotMarkI\"][\"d\"][\"warm\"]",
-      "on_text": "Warm"
+      "value": "datasources[\"Hotpot\"][\"hotpotMarkI\"][\"d\"][\"warm\"] == 1",
+      "on_text": "Warm",
+      "off_text": "Warm"
      }
     },
     {
@@ -194,7 +196,8 @@
     "alias": "hotpotF",
     "microgearRef": "F",
     "topics": "/#",
-    "json_data": true
+    "json_data": true,
+    "name": "Hotpot"
    }
   }
  ],
