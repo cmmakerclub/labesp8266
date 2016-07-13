@@ -18,15 +18,15 @@ CMMC_Blink blinker;
 const char* ssid     = "ESPERT-3020";  // Change your ssid wifi 
 const char* password = "espertap";  // Change your password wifi
 
-// NETPIE.io : man_DHT
-#define APPID   "HelloCMMC"             // Change your appID
-#define KEY     "3CGFOspur1y1hVF"       // Change your Key
-#define SECRET  "T1eUhstPrXG86hyFtNTuFmpD0" // Change your SECRET
+// NETPIE.io : lab_device
+#define APPID   "HelloNETPIE"             // Change your appID
+#define KEY     "VrMaS5XpxrMmwVH"       // Change your Key
+#define SECRET  "OdzDsJP8pB7SvBYtbUzjuAZ6G" // Change your SECRET
 #define ALIAS   "lab1"              // Change your name
 
 #define DHTPIN 12
 #define DHTTYPE DHT11
-#define RELAY 15
+#define RELAY 14
 
 WiFiClient client;
 MicroGear microgear(client);
@@ -50,17 +50,17 @@ void loop() {
     // อ่านค่าจากเซ็นเซอร์ DHt22
     float t = dht.readTemperature();
     float h = dht.readHumidity();
-
+    
     // ส่งค่าไปยัง netpie
-    microgear.chat("DHTFreeboard/Temperature", String(t));
-    microgear.chat("DHTFreeboard/Humidity", String(h));
+    microgear.chat("lab1/Temperature", String(t));
+    microgear.chat("lab1/Humidity", String(h));
 
     Serial.print("Temperature = ");
     Serial.print(t);
     Serial.print("\t");
     Serial.print("Humidity = ");
     Serial.println(h);
-    delay(500);
+    delay(1000);
   }
   else
   {
@@ -111,12 +111,12 @@ void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
   if (msgIN == "ON")
   {
     digitalWrite(RELAY, LOW);
-    delay(10);
+    delay(100);
   }
   else if (msgIN == "OFF")
   {
     digitalWrite(RELAY, HIGH);
-    delay(10);
+    delay(100);
   }
 }
 
