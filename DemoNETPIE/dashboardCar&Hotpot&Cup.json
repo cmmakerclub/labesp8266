@@ -250,11 +250,10 @@
     "appid": "HelloNETPIE",
     "key": "9HuXazCFni43SQg",
     "secret": "HpCqdbzC8DNld8A6kQ4Ks8Igr",
-    "alias": "car_cup_hotpot",
+    "alias": "freeborad_banhan",
     "microgearRef": "car_cup_hotpot",
     "topics": "/#",
-    "json_data": true,
-    "name": "car_cup_hotpot"
+    "json_data": true
    }
   }
  ],
