@@ -11,13 +11,13 @@
 #include <MicroGear.h>
 #include "timer.hpp"
 
-const char* ssid     = "ESPERT-002";
+const char* ssid     = "ESPERT-3020";
 const char* password = "espertap";
 
 
-#define APPID        "HelloCMMC"
-#define KEY          "jq72b0nEEd7gsxV"
-#define SECRET       "b8FG3aAwOlfdXXTCiC6j1Ncpb"
+#define APPID        "HelloNETPIE"
+#define KEY          "RsqYS6C2QkT7FUw"
+#define SECRET       "PIspQh38KXg0z1nyTL4OSJgLv"
 #define ALIAS        "hotpotMarkI"
 
 #define PUBLISH_EVERY_SECS (1*1000)
