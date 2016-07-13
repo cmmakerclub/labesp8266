@@ -3,6 +3,7 @@
 
 #include <ESP8266WiFi.h>
 #include <MicroGear.h>
+#include <Wire.h>
 #include <DHT.h>
 
 #include "CMMC_Blink.hpp"
@@ -14,7 +15,7 @@ const char* password = "espertap";
 #define APPID       "HelloNETPIE"
 #define KEY         "IIHqbqzgkgy2jkQ"
 #define SECRET      "XQUOQIk4KBLAKCP2gUReixMId"
-#define ALIAS       "plug002"
+#define ALIAS       "plugDIM001"
 
 WiFiClient client;
 AuthClient *authclient;
@@ -34,15 +35,32 @@ void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
   msg[msglen] = '\0';
   Serial.println((char *)msg);
   String msg2 = String((char*)msg);
+  int b = atoi(msg2.c_str());
+  if(b>253)
+  b=253;
+  if(b<30)
+   b=30;
 
-  if (msg2 == "ON") {
-    digitalWrite(relayPin, HIGH);
-    digitalWrite(LED_BUILTIN, LOW);
-  }
-  else if (msg2 == "OFF") {
-    digitalWrite(relayPin, LOW);
-    digitalWrite(LED_BUILTIN, HIGH);
-  }
+  b=253-b;
+  Wire.beginTransmission(55); // transmit to device #8
+  //delay(2);
+  Wire.write((uint8_t)b);              // sends one byte
+  //delay(2);
+  Wire.endTransmission();    // stop transmitting
+  //delay(2);
+    Wire.beginTransmission(55); // transmit to device #8
+  //delay(2);
+  Wire.write((uint8_t)b);              // sends one byte
+  //delay(2);
+  Wire.endTransmission();    // stop transmitting
+//  if (msg2 == "ON") {
+//    digitalWrite(relayPin, HIGH);
+//    digitalWrite(LED_BUILTIN, LOW);
+//  }
+//  else if (msg2 == "OFF") {
+//    digitalWrite(relayPin, LOW);
+//    digitalWrite(LED_BUILTIN, HIGH);
+//  }
 }
 
 void onFoundgear(char *attribute, uint8_t* msg, unsigned int msglen) {
@@ -85,7 +103,9 @@ void setup() {
 
   pinMode(relayPin, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
-
+  Wire.begin(); // join i2c bus (address optional for master)
+  Wire.setClock(400000);
+  delay(100);
   dht.begin();
   blinker.init();
   Serial.begin(115200);
