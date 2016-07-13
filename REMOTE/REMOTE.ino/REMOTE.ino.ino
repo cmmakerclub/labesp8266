@@ -4,13 +4,13 @@
 #include <ESP8266WiFi.h>
 #include <MicroGear.h>
 #include "ESPert_OLED.hpp"
-const char* ssid     = "@ESPertAP_001";
+const char* ssid     = "ESPERT-3020";
 const char* password = "espertap";
 
-#define APPID        "HelloCMMC"
-#define KEY          "y9LVdOaRSlxpgX0"
-#define SECRET       "9BGmhMGeUj2cqrdDVkAlMfwmc"
-#define ALIAS        "Remote1"
+#define APPID        "HelloNETPIE"
+#define KEY          "ab0dNrc15TRwLtD"
+#define SECRET       "l7UMUJgdcamCvXHuJGvrZXWyJ"
+#define ALIAS        "MK_Remote"
 
 WiFiClient client;
 AuthClient *authclient;
@@ -113,7 +113,7 @@ void loop() {
       Serial.println(on_off);
       if (on_off == 1)
       {
-        oled.print("1");
+        oled.print("255");
         microgear.chat("plugDIM001", "255");
         on_off = 0;
       }
@@ -129,7 +129,7 @@ void loop() {
       oled.clear();
       if (dim <= 255)
       {
-        dim += 25;
+        dim += 5;
       }
       if (dim > 255)
       {
@@ -145,7 +145,7 @@ void loop() {
       oled.clear();
       if (dim >= 0)
       {
-        dim -= 25;
+        dim -= 5;
       }
       if (dim < 0)
       {
@@ -157,7 +157,7 @@ void loop() {
       oled.update();
       microgear.chat("plugDIM001", (String)dim);
     }
-    delay(400);
+    delay(200);
   }
   else {
     Serial.println("connection lost, reconnect...");
