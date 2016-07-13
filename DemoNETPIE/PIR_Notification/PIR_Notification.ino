@@ -5,7 +5,7 @@
 #include <ESP8266HTTPClient.h>
 
 #ifndef WIFI_SSID
-  #define WIFI_SSID       "ESPERT-002"
+  #define WIFI_SSID       "ESPERT-3020"
   #define WIFI_PASSPHRASE "espertap"
 #endif
 
@@ -35,11 +35,9 @@ void loop() {
     if (detect == HIGH) {
       delay(200);
       Serial.println("Detect : ON");
-      digitalWrite(LED, LOW);
       doHttpGet();
     } else {
       Serial.println("Detect : OFF");
-      digitalWrite(LED, HIGH);
     }
     delay(500);
   }
@@ -72,6 +70,7 @@ void init_wifi() {
 }
 
 void doHttpGet() {
+  digitalWrite(LED, LOW);
   HTTPClient http;
   Serial.print("[HTTP] begin...\n");
   String msg = "http://www.espert.io/MySmartphone/send?key=" + smartphone_key + "&message=" + message;
@@ -96,6 +95,7 @@ void doHttpGet() {
   } else {
     Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
   }
-
   http.end();
+  delay(3000);
+  digitalWrite(LED, HIGH);
 }

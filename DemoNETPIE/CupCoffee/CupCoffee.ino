@@ -9,14 +9,14 @@
 #include "CMMC_Blink.hpp"
 CMMC_Blink blinker;
 
-const char* ssid     = "ESPERT-002";
+const char* ssid     = "ESPERT-3020";
 const char* password = "espertap";
 
-// NETPIE.io : DEMO Device (man_cupcoff)
-#define APPID        "HelloCMMC"
-#define KEY          "yB1Ktdjn7XnFAPR"
-#define SECRET       "Ts6dHCopkjhQFuVejjpWH54TB"
-#define ALIAS        "cupcoff"
+// NETPIE.io : DEMO Device (CupCoffee)
+#define APPID        "HelloNETPIE"
+#define KEY          "RsqYS6C2QkT7FUw"
+#define SECRET       "PIspQh38KXg0z1nyTL4OSJgLv"
+#define ALIAS        "cup"
 
 #define LED 2
 #define MOTOR 16
