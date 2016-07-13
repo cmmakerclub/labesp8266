@@ -8,12 +8,12 @@
 #include "CMMC_Blink.hpp"
 CMMC_Blink blinker;
 
-const char* ssid     = "ESPERT-002";
+const char* ssid     = "ESPERT-3020";
 const char* password = "espertap";
 
-#define APPID       "HelloCMMC"
-#define KEY         "v4MC7hEMyje06Mi"
-#define SECRET      "OZAJGnT21uLcmigeDXLNK2l6W"
+#define APPID       "HelloNETPIE"
+#define KEY         "IIHqbqzgkgy2jkQ"
+#define SECRET      "XQUOQIk4KBLAKCP2gUReixMId"
 #define ALIAS       "plug002"
 
 WiFiClient client;
