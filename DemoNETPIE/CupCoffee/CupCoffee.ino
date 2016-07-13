@@ -16,7 +16,7 @@ const char* password = "espertap";
 #define APPID        "HelloNETPIE"
 #define KEY          "RsqYS6C2QkT7FUw"
 #define SECRET       "PIspQh38KXg0z1nyTL4OSJgLv"
-#define ALIAS        "cup"
+#define ALIAS        "cupcoffee"
 
 #define LED 2
 #define MOTOR 16
