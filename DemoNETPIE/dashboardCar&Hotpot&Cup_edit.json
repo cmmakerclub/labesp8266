@@ -239,17 +239,28 @@
    ]
   },
   {
+   "title": "RGB_RED",
    "width": 1,
    "row": {
     "3": 13,
-    "4": 9
+    "4": 21
    },
    "col": {
     "3": 3,
-    "4": 2
+    "4": 1
    },
    "col_width": 1,
-   "widgets": []
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "RED",
+      "text": "Sent red color",
+      "color": "red",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat(\"RGB\", \"RED\");"
+     }
+    }
+   ]
   },
   {
    "title": "กาต้มน้ำ",
@@ -374,6 +385,61 @@
      }
     }
    ]
+  },
+  {
+   "title": "RGB_BLUE",
+   "width": 1,
+   "row": {
+    "4": 21
+   },
+   "col": {
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "BLUE",
+      "text": "Sent blue color",
+      "color": "blue",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat(\"RGB\", \"BLUE\");"
+     }
+    }
+   ]
+  },
+  {
+   "title": "RGB_GREEN",
+   "width": 1,
+   "row": {
+    "4": 21
+   },
+   "col": {
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "GREEN",
+      "text": "Sent green color",
+      "color": "green",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat(\"RGB\", \"GREEN\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "4": 9
+   },
+   "col": {
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": []
   }
  ],
  "datasources": [
@@ -387,7 +453,8 @@
     "alias": "freeborad_banhan",
     "microgearRef": "car_cup_hotpot",
     "topics": "/#",
-    "json_data": true
+    "json_data": true,
+    "name": "car_cup_hotpot"
    }
   },
   {
