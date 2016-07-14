@@ -1,0 +1,261 @@
+{
+ "version": "application/octet-stream",
+ "allow_edit": true,
+ "plugins": [],
+ "panes": [
+  {
+   "title": "CupCoffee",
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 1,
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "อุณภูมิน้ำในแก้ว",
+      "value": "datasources[\"car_cup_hotpot\"][\"cupcoffee\"][\"d\"][\"temp\"]",
+      "units": "'C",
+      "min_value": 0,
+      "max_value": 100
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "ON",
+      "text": "ปั่นน้ำในแก้ว",
+      "color": "green",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat('cupcoffee','ON');"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "OFF",
+      "text": "หยุดปั่น",
+      "color": "red",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat('cupcoffee','OFF');"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 3,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "W",
+      "text": "เดินหน้า",
+      "color": "blue",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat(\"car\",\"W\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 3,
+    "4": 4
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Toggle",
+     "settings": {
+      "caption": "use keyboard  W A S D B",
+      "state": "",
+      "ontext": "ON",
+      "offtext": "OFF",
+      "onaction": "document.addEventListener('keydown', function(event) {      \tvar x = event.which || event.keyCode; \t    \tif(x == 87) { \t \tmicrogear[\"car_cup_hotpot\"].chat(\"car\",\"W\"); \t\t\t           \t}else if(x == 83) {   \t\tmicrogear[\"car_cup_hotpot\"].chat(\"car\",\"S\"); \t \t} else if(x == 65) {  \tmicrogear[\"car_cup_hotpot\"].chat(\"car\",\"A\"); \t \t} else if(x == 68) {  \t \tmicrogear[\"car_cup_hotpot\"].chat(\"car\",\"D\"); \t\t  \t} else if(x == 66) {   \tmicrogear[\"car_cup_hotpot\"].chat(\"car\",\"B\");  \t}  \t     \t});",
+      "offaction": "location.reload();",
+      "onCreatedAction": ""
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 2,
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": []
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 5
+   },
+   "col": {
+    "3": 2,
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "A",
+      "text": "เลี้ยวซ้าย",
+      "color": "white",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat(\"car\",\"A\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 5
+   },
+   "col": {
+    "3": 3,
+    "4": 4
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "D",
+      "text": "เลี้ยวขวา",
+      "color": "white",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat(\"car\",\"D\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 5,
+    "4": 5
+   },
+   "col": {
+    "3": 3,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "B",
+      "text": "หยุด",
+      "color": "red",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat(\"car\",\"B\");"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 9,
+    "4": 9
+   },
+   "col": {
+    "3": 3,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "S",
+      "text": "ถอย",
+      "color": "yellow",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat(\"car\",\"S\");"
+     }
+    }
+   ]
+  },
+  {
+   "title": "กาต้มน้ำ",
+   "width": 1,
+   "row": {
+    "3": 13,
+    "4": 13
+   },
+   "col": {
+    "3": 1,
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "indicator",
+     "settings": {
+      "title": "Hotpot status",
+      "value": "datasources[\"car_cup_hotpot\"][\"hotpotMarkI\"][\"d\"][\"warm\"] == 0",
+      "on_text": "Boiling",
+      "off_text": "Boiling"
+     }
+    },
+    {
+     "type": "indicator",
+     "settings": {
+      "value": "datasources[\"car_cup_hotpot\"][\"hotpotMarkI\"][\"d\"][\"warm\"] == 1",
+      "on_text": "Warm",
+      "off_text": "Warm"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "Dispense",
+      "text": "กดน้ำ",
+      "color": "blue",
+      "onClick": "microgear[\"car_cup_hotpot\"].chat(\"hotpotMarkI\",\"ON\");"
+     }
+    }
+   ]
+  }
+ ],
+ "datasources": [
+  {
+   "name": "car_cup_hotpot",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloNETPIE",
+    "key": "9HuXazCFni43SQg",
+    "secret": "HpCqdbzC8DNld8A6kQ4Ks8Igr",
+    "alias": "freeborad_banhan",
+    "microgearRef": "car_cup_hotpot",
+    "topics": "/#",
+    "json_data": true
+   }
+  }
+ ],
+ "columns": 4
+}
