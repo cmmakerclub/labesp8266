@@ -8,7 +8,7 @@
    "width": 1,
    "row": {
     "3": 1,
-    "4": 9
+    "4": 1
    },
    "col": {
     "3": 1,
@@ -70,6 +70,7 @@
    ]
   },
   {
+   "title": "Keyboard control",
    "width": 1,
    "row": {
     "3": 1,
@@ -91,6 +92,30 @@
       "onaction": "document.addEventListener('keydown', function(event) {      \tvar x = event.which || event.keyCode; \t    \tif(x == 87) { \t \tmicrogear[\"car_cup_hotpot\"].chat(\"car\",\"W\"); \t\t\t           \t}else if(x == 83) {   \t\tmicrogear[\"car_cup_hotpot\"].chat(\"car\",\"S\"); \t \t} else if(x == 65) {  \tmicrogear[\"car_cup_hotpot\"].chat(\"car\",\"A\"); \t \t} else if(x == 68) {  \t \tmicrogear[\"car_cup_hotpot\"].chat(\"car\",\"D\"); \t\t  \t} else if(x == 66) {   \tmicrogear[\"car_cup_hotpot\"].chat(\"car\",\"B\");  \t}  \t     \t});",
       "offaction": "location.reload();",
       "onCreatedAction": ""
+     }
+    }
+   ]
+  },
+  {
+   "title": "Infrared Temperature",
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 13
+   },
+   "col": {
+    "3": 1,
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "value": "datasources[\"car_cup_hotpot\"][\"InfraTemp\"][\"d\"][\"temp\"]",
+      "units": "C",
+      "min_value": 0,
+      "max_value": 100
      }
     }
    ]
@@ -231,7 +256,7 @@
    "width": 1,
    "row": {
     "3": 17,
-    "4": 21
+    "4": 13
    },
    "col": {
     "3": 1,
@@ -268,6 +293,7 @@
    ]
   },
   {
+   "title": "Humidity plug002",
    "width": 1,
    "row": {
     "3": 17,
@@ -275,7 +301,7 @@
    },
    "col": {
     "3": 2,
-    "4": 3
+    "4": 4
    },
    "col_width": 1,
    "widgets": [
@@ -292,6 +318,7 @@
    ]
   },
   {
+   "title": "Temperature plug002",
    "width": 1,
    "row": {
     "3": 17,
@@ -299,7 +326,7 @@
    },
    "col": {
     "3": 3,
-    "4": 2
+    "4": 3
    },
    "col_width": 1,
    "widgets": [
@@ -316,10 +343,11 @@
    ]
   },
   {
+   "title": "Control plug002",
    "width": 1,
    "row": {
     "3": 25,
-    "4": 13
+    "4": 21
    },
    "col": {
     "3": 1,
@@ -343,28 +371,6 @@
       "text": "Off plug 001",
       "color": "red",
       "onClick": "microgear[\"noJ_freeboard\"].chat(\"plug001\",\"OFF\");"
-     }
-    }
-   ]
-  },
-  {
-   "title": "Infrared Temperature",
-   "width": 1,
-   "row": {
-    "4": 1
-   },
-   "col": {
-    "4": 1
-   },
-   "col_width": 1,
-   "widgets": [
-    {
-     "type": "gauge",
-     "settings": {
-      "value": "datasources[\"car_cup_hotpot\"][\"InfraTemp\"][\"d\"][\"temp\"]",
-      "units": "C",
-      "min_value": 0,
-      "max_value": 100
      }
     }
    ]
