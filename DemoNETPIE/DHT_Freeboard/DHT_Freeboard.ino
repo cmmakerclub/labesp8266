@@ -4,26 +4,26 @@
 #include <ESPert.h>
 #include "DHT.h"
 
-const char* ssid     = "ESPERT-002";  // Change your ssid wifi : @ESPertAP_001 or ESPERT-002
+const char* ssid     = "ESPERT-3020";  // Change your ssid wifi : @ESPertAP_001 or ESPERT-002
 const char* password = "espertap";  // Change your password wifi : espertap
 
-// NETPIE.io : man_DHT
-#define APPID   "HelloCMMC"             // Change your appID
-#define KEY     "3CGFOspur1y1hVF"       // Change your Key
-#define SECRET  "T1eUhstPrXG86hyFtNTuFmpD0" // Change your SECRET
-#define ALIAS   "DHTFreeboard"       // Change your name
+// NETPIE.io : DEMO DHT & OLED
+#define APPID   "HelloNETPIE"             // Change your appID
+#define KEY     "IIHqbqzgkgy2jkQ"       // Change your Key
+#define SECRET  "XQUOQIk4KBLAKCP2gUReixMId" // Change your SECRET
+#define ALIAS   "DHT"       // Change your name
 
-#define LEDPin 2
+#define LEDPin 16
 #define DHTPIN 12
-#define DHTTYPE DHT11
+#define DHTTYPE DHT22
 
 ESPert espert;
 WiFiClient client;
 MicroGear microgear(client);
 DHT dht(DHTPIN, DHTTYPE);
 
-//void init_hardware();
-//void init_wifi();
+void init_hardware();
+void init_wifi();
 
 /******************* microgear loop ***********************************/
 void onFoundgear(char *attribute, uint8_t* msg, unsigned int msglen) {
@@ -127,8 +127,8 @@ void loop() {
     float h = dht.readHumidity();
 
     // ส่งค่าไปยัง netpie
-    microgear.chat("DHTFreeboard/Temperature", String(t));
-    microgear.chat("DHTFreeboard/Humidity", String(h));
+    microgear.chat("DHT/Temperature", String(t));
+    microgear.chat("DHT/Humidity", String(h));
 
     espert.oled.clear();
     espert.oled.setTextSize(1);

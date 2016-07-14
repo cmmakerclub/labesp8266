@@ -5,26 +5,24 @@
 #include <ESP8266WiFi.h>
 #include <MicroGear.h>
 #include "timer.hpp""
-#include "max6675.h"
+#include <Adafruit_MLX90614.h>
 #include "CMMC_Blink.hpp"
+
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 CMMC_Blink blinker;
 
-const char* ssid     = "ESPERT-3020";
+const char* ssid     = "ESPERT - 3020";
 const char* password = "espertap";
 
 // NETPIE.io : DEMO Device (CupCoffee)
 #define APPID        "HelloNETPIE"
-#define KEY          "RsqYS6C2QkT7FUw"
-#define SECRET       "PIspQh38KXg0z1nyTL4OSJgLv"
-#define ALIAS        "cupcoffee"
+#define KEY          "IQXoe2GAAL3vYgk"
+#define SECRET       "g9g9yK8LQYTbqHMgbaNLapdEX"
+#define ALIAS        "InfraTemp"
 
 #define LED 2
-#define MOTOR 16
-#define KDO 12
-#define KCS 15
-#define KCLK 14
 
-MAX6675 thermocouple(KCLK, KCS, KDO);
+bool mlx_initialised = false;
 
 #define PUBLISH_EVERY_SECS (2*1000)
 
@@ -68,11 +66,14 @@ void init_hardware() {
   Serial.println("Starting...");
   blinker.blink(50, LED_BUILTIN);
   delay(200);
-  
+
+  if (!mlx_initialised) {
+    mlx_initialised = true;
+    mlx.begin();
+  }
+
   pinMode(LED, OUTPUT);
-  pinMode(MOTOR, OUTPUT);
   digitalWrite(LED, HIGH);
-  digitalWrite(MOTOR, LOW);
 }
 
 void microgear_loop() {
@@ -93,7 +94,6 @@ void init_wifi() {
     while (WiFi.status() != WL_CONNECTED) {
       delay(500);
       Serial.print(".");
-      digitalWrite(MOTOR, LOW);
     }
   }
 
