@@ -8,7 +8,7 @@
 
 #define POT A0
 
-byte potValue;
+int potValue;
 
 void setup() {
   Serial.begin(115200);
