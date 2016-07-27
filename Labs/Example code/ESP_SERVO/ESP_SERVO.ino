@@ -15,21 +15,20 @@ void setup() {
 }
 
 void loop() {
-  int degree;
-
-  for (degree = 0; degree <= 180; degree += 1) // goes from 0 degrees to 180 degrees
-  { // in steps of 1 degree
-    espservo.write(degree);              // tell servo to go to position in variable 'pos'
-    Serial.print("SERVO degree = ");
-    Serial.println(degree);
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
-  for (degree = 180; degree >= 0; degree -= 1) // goes from 180 degrees to 0 degrees
-  {
-    espservo.write(degree);              // tell servo to go to position in variable 'pos'
-    Serial.print("SERVO degree = ");
-    Serial.println(degree);
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
+  int degree;espservo.write(90); 
+//  for (degree = 0; degree <= 180; degree += 1) // goes from 0 degrees to 180 degrees
+//  { // in steps of 1 degree
+//    espservo.write(degree);              // tell servo to go to position in variable 'pos'
+//    Serial.print("SERVO degree = ");
+//    Serial.println(degree);
+//    delay(15);                       // waits 15ms for the servo to reach the position
+//  }
+//  for (degree = 180; degree >= 0; degree -= 1) // goes from 180 degrees to 0 degrees
+//  {
+//    espservo.write(degree);              // tell servo to go to position in variable 'pos'
+//    Serial.print("SERVO degree = ");
+//    Serial.println(degree);
+//    delay(15);                       // waits 15ms for the servo to reach the position
+//  }
 }
 
