@@ -1,0 +1,274 @@
+{
+ "version": "application/octet-stream",
+ "allow_edit": true,
+ "plugins": [],
+ "panes": [
+  {
+   "title": "อุณหภูมิจากปลั๊ก 001",
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 3,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "plug001",
+      "value": "datasources[\"freeboard_noJson\"][\"/HelloNETPIE/gearname/plug001/temp\"]",
+      "units": "องศาสเซลเซียส",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "title": "ความชื้นในอากาศจากปลั๊ก 001",
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 3,
+    "4": 4
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "plug001",
+      "value": "datasources[\"freeboard_noJson\"][\"/HelloNETPIE/gearname/plug001/humid\"]",
+      "units": "%RH",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 1,
+    "4": 1
+   },
+   "col": {
+    "3": 2,
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": []
+  },
+  {
+   "title": "สถานะปลั๊กไฟ 001",
+   "width": 1,
+   "row": {
+    "3": 5,
+    "4": 5
+   },
+   "col": {
+    "3": 1,
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "indicator",
+     "settings": {
+      "title": "ปลั๊กเปิด - ปิด",
+      "value": "datasources[\"freeboard_noJson\"][\"/HelloNETPIE/gearname/plug001\"] == 'ON'",
+      "on_text": "ON",
+      "off_text": "OFF"
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 9,
+    "4": 1
+   },
+   "col": {
+    "3": 2,
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "text_widget",
+     "settings": {
+      "title": "ปลั๊กไฟควบคุมผ่านระบบอินเทอร์เน็ต",
+      "size": "regular",
+      "value": "",
+      "animate": true
+     }
+    }
+   ]
+  },
+  {
+   "title": "สถานะปลั๊กไฟ 002",
+   "width": 1,
+   "row": {
+    "3": 9,
+    "4": 9
+   },
+   "col": {
+    "3": 1,
+    "4": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "indicator",
+     "settings": {
+      "title": "ปลั๊กเปิด - ปิด",
+      "value": "datasources[\"freeboard_noJson\"][\"/HelloNETPIE/gearname/plug002\"] == 'ON'",
+      "on_text": "ON",
+      "off_text": "OFF"
+     }
+    }
+   ]
+  },
+  {
+   "title": "ควบคุมปลั๊กไฟ 002",
+   "width": 1,
+   "row": {
+    "3": 11,
+    "4": 11
+   },
+   "col": {
+    "3": 2,
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "เปิด",
+      "text": "เปิดใช้งานปลั๊ก",
+      "color": "green",
+      "onClick": "microgear[\"noJ_freeboard\"].chat(\"plug002\", \"ON\");"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "ปิด",
+      "text": "ปิดใช้งานปลั๊ก",
+      "color": "red",
+      "onClick": "microgear[\"noJ_freeboard\"].chat(\"plug002\", \"OFF\");"
+     }
+    }
+   ]
+  },
+  {
+   "title": "ความชื้นในอากาศจากปลั๊ก 002",
+   "width": 1,
+   "row": {
+    "3": 17,
+    "4": 9
+   },
+   "col": {
+    "3": 2,
+    "4": 4
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "plug002",
+      "value": "datasources[\"freeboard_noJson\"][\"/HelloNETPIE/gearname/plug002/humid\"]",
+      "units": "%RH",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "title": "อุณหภูมิจากปลั๊ก 002",
+   "width": 1,
+   "row": {
+    "3": 17,
+    "4": 9
+   },
+   "col": {
+    "3": 3,
+    "4": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "title": "plug002",
+      "value": "datasources[\"freeboard_noJson\"][\"/HelloNETPIE/gearname/plug002/temp\"]",
+      "units": "องศาเซลเซียส",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "title": "ควบคุมปลั๊กไฟ 001",
+   "width": 1,
+   "row": {
+    "3": 25,
+    "4": 5
+   },
+   "col": {
+    "3": 1,
+    "4": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "เปิด",
+      "text": "เปิดใช้งานปลั๊ก",
+      "color": "green",
+      "onClick": "microgear[\"noJ_freeboard\"].chat(\"plug001\", \"ON\");"
+     }
+    },
+    {
+     "type": "Button",
+     "settings": {
+      "caption": "ปิด",
+      "text": "ปิดใช้งานปลั๊ก",
+      "color": "red",
+      "onClick": "microgear[\"noJ_freeboard\"].chat(\"plug001\",\"OFF\");"
+     }
+    }
+   ]
+  }
+ ],
+ "datasources": [
+  {
+   "name": "freeboard_noJson",
+   "type": "netpie_microgear",
+   "settings": {
+    "appid": "HelloNETPIE",
+    "key": "9HuXazCFni43SQg",
+    "secret": "HpCqdbzC8DNld8A6kQ4Ks8Igr",
+    "alias": "Board_noJson",
+    "microgearRef": "noJ_freeboard",
+    "topics": "/#",
+    "json_data": false,
+    "name": "freeboard_noJson"
+   }
+  }
+ ],
+ "columns": 4
+}
