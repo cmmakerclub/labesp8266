@@ -73,6 +73,7 @@ void init_netpie() {
   //microgear.resetToken();
   microgear.init(KEY, SECRET, ALIAS);
   microgear.connect(APPID);
+  Serial.println("netpie connected");
 }
 
 void _publish() {

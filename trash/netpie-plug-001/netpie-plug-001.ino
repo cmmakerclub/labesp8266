@@ -11,17 +11,15 @@
 #include <MicroGear.h>
 #include "timer.hpp"
 
-const char* ssid     = "ESPERT-002";
-const char* password = "espertap";
+const char* ssid     = "CMMC";
+const char* password = "espertap2";
 
 
-#define APPID       "HelloCMMC"
-#define KEY         "v4MC7hEMyje06Mi"
-#define SECRET      "OZAJGnT21uLcmigeDXLNK2l6W"
-
-#define ALIAS       "plug001"
-#define CHAT_WITH   "htmlgear2"
-#define PUBLISH_EVERY (2*1000)
+#define APPID       "HelloNETPIE"
+#define KEY         "IIHqbqzgkgy2jkQ"
+#define SECRET      "XQUOQIk4KBLAKCP2gUReixMId"
+#define ALIAS       "nat001"
+#define PUBLISH_EVERY (5*1000)
 
 
 WiFiClient client;
@@ -63,7 +61,6 @@ void setup() {
 
 void loop() {
   microgear_loop();
-  delay(100);
 }
 
 
