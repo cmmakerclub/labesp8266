@@ -15,8 +15,8 @@
 #include "CMMC_Blink.hpp"
 CMMC_Blink blinker;
 
-const char* ssid     = "ESPERT-3020";  // Change your ssid wifi 
-const char* password = "espertap";  // Change your password wifi
+const char* ssid     = "ssid wifi";  // Change your ssid wifi 
+const char* password = "password wifi";  // Change your password wifi
 
 // NETPIE.io : lab_device
 #define APPID   "HelloNETPIE"             // Change your appID

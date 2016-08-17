@@ -10,9 +10,8 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-
-const char* ssid = "........";
-const char* password = "........";
+const char* ssid     = "ssid wifi";  // Change your ssid wifi 
+const char* password = "password wifi";  // Change your password wifi
 
 void setup() {
   Serial.begin(115200);

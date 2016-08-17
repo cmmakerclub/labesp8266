@@ -3,8 +3,8 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 
-const char* ssid = "........";
-const char* password = "........";
+const char* ssid     = "ssid wifi";  // Change your ssid wifi 
+const char* password = "password wifi";  // Change your password wifi
 
 ESP8266WebServer server(80);
 
